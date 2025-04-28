@@ -42,15 +42,7 @@ class GFETSimulatorAmbipolar:
         elif sweep_type == 'log':
             Vgs_values = np.logspace(np.log10(Vgs_range[0]), np.log10(Vgs_range[1]), num_points)
             Vds_values = np.logspace(np.log10(Vds_range[0]), np.log10(Vds_range[1]), num_points)
-        elif sweep_type == 'dual-linear':
-            Vgs_values = np.concatenate([
-                np.linspace(Vgs_range[0], (Vgs_range[0]+Vgs_range[1])/2, num_points//2),
-                np.linspace((Vgs_range[0]+Vgs_range[1])/2, Vgs_range[1], num_points//2)
-            ])
-            Vds_values = np.concatenate([
-                np.linspace(Vds_range[0], (Vds_range[0]+Vds_range[1])/2, num_points//2),
-                np.linspace((Vds_range[0]+Vds_range[1])/2, Vds_range[1], num_points//2)
-            ])
+       
         else:
             raise ValueError("Invalid sweep_type. Choose from 'linear', 'log', or 'dual-linear'.")
 
